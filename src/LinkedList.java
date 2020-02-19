@@ -8,6 +8,7 @@
 public class LinkedList {
     Node first;
     Node last;
+    int size = 0;
 
     /**
      * Constructor to create an empty list.
@@ -23,14 +24,17 @@ public class LinkedList {
      * @param newNode
      */
     public void addLast(Node newNode) {
+        size++;
+
         if (first == null) {
             first = newNode;
             last = newNode;
+        } else {
+            //makes the "last" node the node that gets added
+            last.next = newNode;
+            last = newNode;
+            last.next = null;
         }
-
-        last.next = newNode;
-        last = newNode;
-        last.next = null;
     }
 
     /**
@@ -39,7 +43,14 @@ public class LinkedList {
      * @return
      */
     public Node removeFirst() {
-        return null;
+        if (size == 0) {
+            return null;
+        } else {
+            size--;
+            Node shitNode = new Node(first.data, first.next);
+            first = first.next;
+            return shitNode;
+        }
     }
 
     /**
@@ -49,7 +60,7 @@ public class LinkedList {
      * @return
      */
     public int size() {
-        return 0;
+        return size;
     }
 
     /**
@@ -59,13 +70,4 @@ public class LinkedList {
     public boolean isEmpty() {
         return size() == 0;
     }
-
-    public static void main(String[] args) {
-        LinkedList list = new LinkedList();
-
-        Node myNode = new Node("shit",null);
-
-        list.addLast(myNode);
-    }
-
 }
