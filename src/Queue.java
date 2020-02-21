@@ -6,24 +6,26 @@
  */
 public class Queue {
     // Need data structure....
+    LinkedList linkedList = null;
 
     public Queue() {
-
+        linkedList = new LinkedList();
     }
 
     public void enqueue(String text) {
-
+        Node node = new Node(text);
+        linkedList.addLast(node);
     }
 
     public String dequeue() {
-        return "";
+        return linkedList.removeFirst().data;
     }
 
     public boolean isEmpty() {
-        return false;
+        return linkedList.size == 0;
     }
 
     public int size() {
-        return -1;
+        return linkedList.size;
     }
 }
