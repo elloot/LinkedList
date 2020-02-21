@@ -8,7 +8,7 @@
 public class LinkedList {
     Node first;
     Node last;
-    int size = 0;
+    int size;
 
     /**
      * Constructor to create an empty list.
@@ -16,6 +16,7 @@ public class LinkedList {
     public LinkedList() {
         first = null;
         last = null;
+        size = 0;
     }
 
     /**
@@ -47,9 +48,9 @@ public class LinkedList {
             return null;
         } else {
             size--;
-            Node shitNode = new Node(first.data, first.next);
+            Node node = new Node(first.data, first.next);
             first = first.next;
-            return shitNode;
+            return node;
         }
     }
 
